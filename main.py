@@ -59,6 +59,18 @@ while cap.isOpened():  # пока камера "работает"
     fps = 1/(currentTime - prevTime)
     str_fps = f"FPS: {fps}"
     cv2.putText(image, str_fps, (150, 100), cv2.FONT_HERSHEY_PLAIN, 4, (0, 220, 100), 8)
+
+    ft = cv2.freetype.createFreeType2()
+    ft.loadFontData(fontFileName='Ubuntu-R.ttf', id=0)
+    ft.putText(img=image,
+        text='Quick Fox',
+        org=(15, 70),
+        fontHeight=60,
+        color=(255,  255, 255),
+        thickness=-1,
+        line_type=cv2.LINE_AA,
+        bottomLeftOrigin=True)
+
     cv2.imshow('image', image)
     if cv2.waitKey(1) &  0xFF == 27:  # esc
         break
